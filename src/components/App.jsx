@@ -1,19 +1,26 @@
-import MovieDetalis from "../pages/MovieDetails";
+import MovieDetalis from "./MovieDetalis/MovieDetails";
 import Movies from "pages/Movies";
 import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
-import Header from "./Header/Header";
+import Layout from "./Layout/Layout";
+import Cast from "./Cast/Cast";
+import MovieReviews from './MovieReviews/MovieReviews'
 
 
 export const App = () => {
-  return (<div >
-    <Header/>
+  return (< >
     <Routes>
-      <Route index="/" element={<Home/>} />
-      <Route path="/movies" element={<Movies />}/>
-      <Route path="/movies:movieId" element={<MovieDetalis />}/>
+      <Route path="/" element={<Layout/>}>
+          <Route index="/" element={<Home/>} />
+          <Route path="movies" element={<Movies />}>
+              <Route path=":movieId" element={<MovieDetalis />}>
+                <Route path="cast" element={<Cast/>}/>
+                <Route path="reviews" element={<MovieReviews/>}/>
+              </Route>
+           </Route>
+      </Route>
     </Routes>
-  </div>
+  </>
 
   );
 };

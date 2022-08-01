@@ -8,7 +8,7 @@ export default function Home() {
         fetchTranding().then(res=>setItems(res.results))
     },[])
     return <>
-        <h1>Home</h1>
-        <Gallery items={items }/></>
+        <Gallery items={items} />
+    </>
    
 }

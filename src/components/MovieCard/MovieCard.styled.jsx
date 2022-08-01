@@ -12,9 +12,6 @@ export const WrapImg= styled.div`
     padding:15px;
     background-color: #f1f1f1;
     width:35%;
-  
-  
-
 
 `
 export const Poster= styled.img`
@@ -31,4 +28,13 @@ width:65%;
   background-color:grey;
   color:white;
 
+`
+export const Title =styled.h2`
+    margin-bottom:20px;
+`
+export const SubTitle =styled.h3`
+    margin-bottom:5px;
+`
+export const Text=styled.p`
+    margin-bottom:10px;
 `
