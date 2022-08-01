@@ -7,11 +7,19 @@ export default function MovieReviews() {
   const [reviews, setReviews] = useState([]);
   const { movieId } = useParams();
   useEffect(() => {
-    fetchReviews(movieId).then(res => setReviews(res.results));
+    async function fetch() {
+    try {
+      const response = await fetchReviews(movieId)
+      await setReviews(response.results)
+    } catch (error) {
+      
+    }
+    }
+
+fetch()
   }, [movieId]);
   return (
     <>
-      <h2>MovieReviews</h2>
       <ul>
         {reviews.map(({ id, author, content }) => {
           return (

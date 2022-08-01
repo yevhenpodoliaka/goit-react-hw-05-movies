@@ -8,14 +8,20 @@ export default function Cast() {
   const [cast, setCast] = useState([]);
   const { movieId } = useParams();
   useEffect(() => {
-    fetchCast(movieId).then(res => {
-      setCast(res.cast);
-    });
+    async function fetch() {
+    try {
+      const response = await fetchCast(movieId)
+      await setCast(response.cast)
+    } catch (error) {
+      
+    }
+    }
+
+fetch()
   }, [movieId]);
 
   return (
     <>
-      <h2>cast</h2>
       <CastList>
         {cast.map(({ id, character, name, profile_path }) => {
           return (

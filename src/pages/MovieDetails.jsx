@@ -9,7 +9,16 @@ export default function MovieDetalis() {
   const [data, setData] = useState({});
   const { movieId } = useParams();
   useEffect(() => {
-    fetchMovieById(movieId).then(setData);
+    async function fetch() {
+    try {
+      const response = await fetchMovieById(movieId)
+      await setData(response)
+    } catch (error) {
+      
+    }
+    }
+    
+    fetch()
   }, [movieId]);
   return (
     <>
