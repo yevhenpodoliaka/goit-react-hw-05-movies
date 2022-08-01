@@ -19,4 +19,16 @@ export async function fetchMovieById(movieId) {
     const response = await fetch(url);
     const data = response.json();
     return data;
-  }
+}
+    export async function fetchCast(movieId) {
+      const url = `${BASE_URL}/movie/${movieId}/credits?api_key=${KEY}&language=en-US`;
+      const response = await fetch(url);
+      const data = response.json();
+      return data;
+}
+    export async function fetchReviews(movieId) {
+      const url = `${BASE_URL}/movie/${movieId}/reviews?api_key=${KEY}&language=en-US`;
+      const response = await fetch(url);
+      const data = response.json();
+      return data;
+    }

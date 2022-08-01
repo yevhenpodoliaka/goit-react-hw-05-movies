@@ -1,5 +1,6 @@
 import { Card, WrapImg, Poster, WrapDescription ,Title,SubTitle,Text} from './MovieCard.styled';
 import  defaultPoster from '../../img/no-poster.jpg';
+import { Link ,useLocation} from 'react-router-dom';
 
 export default function MovieCard({
   poster_path,
@@ -11,8 +12,12 @@ export default function MovieCard({
     ? `https://image.tmdb.org/t/p/w500/${poster_path}`
     : `${defaultPoster}`;
   const genersList = genres.map(element => element.name).join(', ');
+
+  const location = useLocation()
+
   return (
     <Card>
+    <Link to={location.state?.from ??'/'}>back</Link>
       <WrapImg>
         <Poster src={imageUrl} alt="" />
       </WrapImg>
