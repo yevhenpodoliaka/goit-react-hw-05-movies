@@ -1,16 +1,17 @@
 import styled from "styled-components";
 
-export const Card= styled.div`
+export const Card = styled.div`
     display:flex;
-    /* align-items:center;
-    justify-content:center; */
+    width:100%;
 
 `
 export const WrapImg= styled.div`
     display:flex;
     align-items:center;
     justify-content:center;
-   width:15%;
+    padding:15px;
+    background-color: #f1f1f1;
+    width:35%;
   
   
 
@@ -23,6 +24,11 @@ export const Poster= styled.img`
     object-fit:cover;
 
 `
-export const WrapDescription= styled.div`
+export const WrapDescription = styled.div`
+width:65%;
  text-align:start;
+  padding: 0 50px;
+  background-color:grey;
+  color:white;
+
 `

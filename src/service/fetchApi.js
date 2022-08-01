@@ -13,3 +13,10 @@ export async function fetchMovieById(movieId) {
          const data = await response.json();
          return data;
 }
+
+  export async function fetchSearchMovie(searchQuery) {
+    const url = `${BASE_URL}/search/movie?api_key=${KEY}&language=en-US&query=${searchQuery}&page=${1}&include_adult=false`;
+    const response = await fetch(url);
+    const data = response.json();
+    return data;
+  }
