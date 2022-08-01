@@ -1,4 +1,4 @@
-import MovieDetalis from "./MovieDetalis/MovieDetails";
+import MovieDetalis from "../pages/MovieDetails";
 import Movies from "pages/Movies";
 import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
@@ -12,12 +12,12 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<Layout/>}>
           <Route index="/" element={<Home/>} />
-          <Route path="movies" element={<Movies />}>
-              <Route path=":movieId" element={<MovieDetalis />}>
-                <Route path="cast" element={<Cast/>}/>
-                <Route path="reviews" element={<MovieReviews/>}/>
-              </Route>
-           </Route>
+          <Route path="movies" element={<Movies />}/>
+          <Route path="movies/:movieId" element={<MovieDetalis />}>
+              <Route path="cast" element={<Cast/>}/>
+              <Route path="reviews" element={<MovieReviews/>}/>
+          </Route>
+         
       </Route>
     </Routes>
   </>

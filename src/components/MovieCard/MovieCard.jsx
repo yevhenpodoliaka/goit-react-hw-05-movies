@@ -1,5 +1,5 @@
 import { Card, WrapImg, Poster, WrapDescription ,Title,SubTitle,Text} from './MovieCard.styled';
-const defaultPoster = '../../img/no-poster.jpg';
+import  defaultPoster from '../../img/no-poster.jpg';
 
 export default function MovieCard({
   poster_path,
