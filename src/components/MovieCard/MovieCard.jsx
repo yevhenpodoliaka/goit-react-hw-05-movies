@@ -1,6 +1,6 @@
-import { Card, WrapImg, Poster, WrapDescription ,Title,SubTitle,Text} from './MovieCard.styled';
+import { LinkBack,Card, WrapImg, Poster, WrapDescription ,Title,SubTitle,Text} from './MovieCard.styled';
 import  defaultPoster from '../../img/no-poster.jpg';
-import { Link ,useLocation} from 'react-router-dom';
+import {  useLocation } from 'react-router-dom';
 
 export default function MovieCard({
   poster_path,
@@ -17,9 +17,9 @@ export default function MovieCard({
 
   return (
     <Card>
-    <Link to={location.state?.from ??'/'}>back</Link>
+    <LinkBack to={location.state?.from ??'/'}> Go back</LinkBack>
       <WrapImg>
-        <Poster src={imageUrl} alt="" />
+        <Poster src={imageUrl} alt={title} />
       </WrapImg>
       <WrapDescription>
         <Title>{title}</Title>

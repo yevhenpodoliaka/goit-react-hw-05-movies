@@ -1,6 +1,7 @@
 import { fetchReviews } from 'service/fetchApi';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import MovieReviewsItem from './MovieReviewsItem';
 
 export default function MovieReviews() {
   const [reviews, setReviews] = useState([]);
@@ -14,10 +15,7 @@ export default function MovieReviews() {
       <ul>
         {reviews.map(({ id, author, content }) => {
           return (
-            <li key={id}>
-              <p>author: {author}</p>
-              <p>review:{content}</p>
-            </li>
+            <MovieReviewsItem key={id} author={author} content={content} />
           );
         })}
       </ul>

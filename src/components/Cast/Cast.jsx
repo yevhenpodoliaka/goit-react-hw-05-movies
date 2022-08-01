@@ -1,36 +1,33 @@
 import { fetchCast } from 'service/fetchApi';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import defaultPoster from '../../img/no-poster.jpg';
+import CastItem from './CastItem';
+import { CastList } from './Cast.styled';
 
 export default function Cast() {
   const [cast, setCast] = useState([]);
   const { movieId } = useParams();
   useEffect(() => {
     fetchCast(movieId).then(res => {
-      setCast(res.cast)
+      setCast(res.cast);
     });
-  },[movieId]);
+  }, [movieId]);
 
   return (
     <>
       <h2>cast</h2>
-      <ul>
+      <CastList>
         {cast.map(({ id, character, name, profile_path }) => {
-          const imageUrl = profile_path
-            ? `https://image.tmdb.org/t/p/w500/${profile_path}`
-            : `${defaultPoster}`;
           return (
-            <li key={id}>
-              <img src={imageUrl} alt="" width={160} />
-              <p>character: {character}</p>
-              <p>name:{name}</p>
-            </li>
+            <CastItem
+              key={id}
+              character={character}
+              name={name}
+              profile_path={profile_path}
+            />
           );
         })}
-      </ul>
+      </CastList>
     </>
   );
 }
-
-
