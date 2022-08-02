@@ -16,13 +16,22 @@ export default function Movies() {
     if (!query) {
       return;
     }
-    fetchSearchMovie(query).then(res => setItems(res.results));
+    async function fetch() {
+      try {
+        const response = await fetchSearchMovie(query);
+        await setItems(response.results);
+      } catch (error) {}
+    }
+    fetch();
   }, [query]);
-
   return (
     <>
       <SearchForm onSubmit={queryParam} />
-      <Gallery items={items} />
+      {items.length === 0 && query !== null ? (
+        <p>Your query did not return any results, please try again!</p>
+      ) : (
+        <Gallery items={items} />
+      )}
     </>
   );
 }

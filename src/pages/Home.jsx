@@ -5,7 +5,15 @@ export default function Home() {
     const [items, setItems] = useState([])
     
     useEffect(() => {
-        fetchTranding().then(res=>setItems(res.results))
+            async function fetch() {
+    try {
+      const response = await fetchTranding()
+      await setItems(response.results)
+    } catch (error) {
+      
+    }
+    }
+        fetch()
     },[])
     return <>
         <Gallery items={items} />

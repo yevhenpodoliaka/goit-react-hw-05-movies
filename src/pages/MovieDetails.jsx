@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState, useEffect } from 'react';
+import { useState, useEffect ,Suspense} from 'react';
 import { useParams, Outlet ,NavLink} from 'react-router-dom';
 import { fetchMovieById } from 'service/fetchApi';
 import MovieCard from '../components/MovieCard/MovieCard';
@@ -32,7 +32,9 @@ export default function MovieDetalis() {
         <h3>Additional Information</h3>
         <NavLinkStyled to="cast">cast</NavLinkStyled>
         <NavLinkStyled to="reviews">reviews</NavLinkStyled>
-        <Outlet />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Outlet />
+          </Suspense>
       </Wrap>
     </>
   );

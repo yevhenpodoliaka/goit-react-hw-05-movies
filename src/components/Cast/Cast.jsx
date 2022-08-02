@@ -9,31 +9,33 @@ export default function Cast() {
   const { movieId } = useParams();
   useEffect(() => {
     async function fetch() {
-    try {
-      const response = await fetchCast(movieId)
-      await setCast(response.cast)
-    } catch (error) {
-      
-    }
+      try {
+        const response = await fetchCast(movieId);
+        await setCast(response.cast);
+      } catch (error) {}
     }
 
-fetch()
+    fetch();
   }, [movieId]);
 
   return (
     <>
-      <CastList>
-        {cast.map(({ id, character, name, profile_path }) => {
-          return (
-            <CastItem
-              key={id}
-              character={character}
-              name={name}
-              profile_path={profile_path}
-            />
-          );
-        })}
-      </CastList>
+      {cast.length === 0 ? (
+        <p>we dont have cast for this movie</p>
+      ) : (
+        <CastList>
+          {cast.map(({ id, character, name, profile_path }) => {
+            return (
+              <CastItem
+                key={id}
+                character={character}
+                name={name}
+                profile_path={profile_path}
+              />
+            );
+          })}
+        </CastList>
+      )}
     </>
   );
 }
