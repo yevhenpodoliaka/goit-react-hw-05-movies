@@ -1,27 +1,33 @@
-import styled from "styled-components";
-import { useState, useEffect ,Suspense} from 'react';
-import { useParams, Outlet ,NavLink} from 'react-router-dom';
+import styled from 'styled-components';
+import { useState, useEffect, Suspense } from 'react';
+import {
+  useLocation,
+  useParams,
+  Outlet,
+  NavLink,
+  Link,
+} from 'react-router-dom';
 import { fetchMovieById } from 'service/fetchApi';
 import MovieCard from '../components/MovieCard/MovieCard';
-
 
 export default function MovieDetalis() {
   const [data, setData] = useState({});
   const { movieId } = useParams();
   useEffect(() => {
     async function fetch() {
-    try {
-      const response = await fetchMovieById(movieId)
-      await setData(response)
-    } catch (error) {
-      
+      try {
+        const response = await fetchMovieById(movieId);
+        await setData(response);
+      } catch (error) {}
     }
-    }
-    
-    fetch()
+
+    fetch();
   }, [movieId]);
+
+  const location = useLocation();
   return (
     <>
+      <LinkBack to={location.state?.from ?? '/'}> Go back</LinkBack>
       <MovieCard
         poster_path={data.poster_path}
         title={data.title}
@@ -30,28 +36,42 @@ export default function MovieDetalis() {
       />
       <Wrap>
         <h3>Additional Information</h3>
-        <NavLinkStyled to="cast">cast</NavLinkStyled>
-        <NavLinkStyled to="reviews">reviews</NavLinkStyled>
+        <NavLinkStyled to="cast" state={{ from: location }}>
+          cast
+        </NavLinkStyled>
+        <NavLinkStyled to="reviews" state={{ from: location }}>
+          reviews
+        </NavLinkStyled>
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />
-          </Suspense>
+        </Suspense>
       </Wrap>
     </>
   );
 }
 
- const Wrap= styled.div`
-      background-color: #f1f1f1;
-    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+const Wrap = styled.div`
+  background-color: #f1f1f1;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-    display:flex;
-    flex-direction:column;
-`
- const NavLinkStyled= styled(NavLink)`
-  text-decoration:none;
-  color:black;
-  &.active{
+  display: flex;
+  flex-direction: column;
+`;
+const NavLinkStyled = styled(NavLink)`
+  text-decoration: none;
+  color: black;
+  margin-bottom: 10px;
+  &.active {
     color: blue;
-    font-weight:bold;
-  } 
-`
+    font-weight: bold;
+  }
+`;
+const LinkBack = styled(Link)`
+  position: absolute;
+  color: blue;
+  text-decoration: none;
+  &:hover {
+    transform: scale(1.3);
+    font-weight: bold;
+  }
+`;

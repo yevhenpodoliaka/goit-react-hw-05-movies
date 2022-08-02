@@ -1,15 +1,7 @@
 import styled from "styled-components";
-import{Link} from 'react-router-dom'
 
-export const LinkBack = styled(Link)`
-    position:absolute;
-    color:blue;
-    text-decoration:none;
-    &:hover{
-        transform: scale(1.3);
-        font-weight:bold;
-    }
-`
+
+
 export const Card = styled.div`
     display:flex;
     width:100%;
@@ -20,8 +12,8 @@ export const WrapImg= styled.div`
     align-items:center;
     justify-content:center;
     padding:25px;
-    background-color: #f1f1f1;
-    width:35%;
+ 
+    width:25%;
 
 `
 export const Poster= styled.img`
@@ -32,7 +24,7 @@ export const Poster= styled.img`
 
 `
 export const WrapDescription = styled.div`
-width:65%;
+width:75%;
  text-align:start;
   padding: 0 50px;
   background-color:grey;
