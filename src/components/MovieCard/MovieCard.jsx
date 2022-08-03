@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import {
   Card,
   WrapImg,
@@ -20,7 +20,6 @@ export default function MovieCard({
     ? `https://image.tmdb.org/t/p/w500/${poster_path}`
     : `${defaultPoster}`;
   const genersList = genres.map(element => element.name).join(', ');
-
   return (
     <Card>
       <WrapImg>
@@ -38,9 +37,8 @@ export default function MovieCard({
 }
 
 MovieCard.propTypes = {
-  poster_path: PropTypes.string.isRequired,
+  poster_path: PropTypes.string,
   title: PropTypes.string.isRequired,
   overview: PropTypes.string.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.object)
-
-}
+  genres: PropTypes.arrayOf(PropTypes.object),
+};

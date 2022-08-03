@@ -1,4 +1,5 @@
-import { SiteHeader ,NavlinkStyled} from "./Header.styled"
+import { SiteHeader, NavlinkStyled } from "./Header.styled"
+
 export default function Header() {
         return (
           <SiteHeader>

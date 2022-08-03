@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types'
 import GalleryItem from "../GalleryItem/GalleryItem";
+import {Gallerylist}from './Gallery.styled'
 
 export default function Gallery({ items }) {
-    return <ul>
-        {items.map(({ id, title }) => <GalleryItem key={id}
+    return <Gallerylist>
+        {items.map(({ id, title, poster_path }) => <GalleryItem key={id}
             title={title}
-            id={ id} />)}
-</ul>
+            id={id}
+            poster_path={ poster_path} />)}
+</Gallerylist>
 }
 
 Gallery.propTypes = {
