@@ -16,10 +16,8 @@ export default function Cast() {
         console.log(error);
       }
     }
-
     fetch();
   }, [movieId]);
-
   return (
     <>
       {cast.length === 0 ? (

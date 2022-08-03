@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 import { useState, useEffect, Suspense } from 'react';
-import {
-  useLocation,
-  useParams,
-  Outlet,
-  NavLink,
-} from 'react-router-dom';
+import { useLocation, useParams, Outlet, NavLink } from 'react-router-dom';
 import { fetchMovieById } from 'service/fetchApi';
 import MovieCard from '../components/MovieCard/MovieCard';
 import GoBackLink from 'components/GoBackLink/GoBackLink';
@@ -27,17 +22,20 @@ export default function MovieDetalis() {
   }, [movieId]);
 
   const location = useLocation();
-  
-  return (
+  if (!data) {
+    return null;
+  }
+  const { poster_path, title, overview, genres } = data;
 
+  return (
     <>
-<GoBackLink/>
-  { data &&  <MovieCard
-        poster_path={data.poster_path}
-        title={data.title}
-        overview={data.overview}
-        genres={data.genres}
-      />}
+      <GoBackLink />
+      <MovieCard
+        poster_path={poster_path}
+        title={title}
+        overview={overview}
+        genres={genres}
+      />
       <Wrap>
         <h3>Additional Information</h3>
         <NavLinkStyled to="cast" state={{ from: location }}>
@@ -70,4 +68,3 @@ const NavLinkStyled = styled(NavLink)`
     font-weight: bold;
   }
 `;
-

@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import defaultPoster from '../../img/no-poster.jpg';
 import { Item, CastImg, CastTitle, CastText } from './Cast.styled';
 
@@ -16,8 +16,7 @@ export default function CastItem({ character, name, profile_path }) {
 }
 
 CastItem.propTypes = {
-  src: PropTypes.string.isRequired,
+  profile_path: PropTypes.string,
   name: PropTypes.string.isRequired,
   character: PropTypes.string.isRequired,
-}
-
+};

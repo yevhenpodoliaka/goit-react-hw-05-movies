@@ -11,7 +11,9 @@ export default function MovieReviews() {
       try {
         const response = await fetchReviews(movieId);
         await setReviews(response.results);
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     fetch();
