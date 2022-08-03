@@ -1,14 +1,20 @@
-import { Link, useLocation } from "react-router-dom";
-import styled from "styled-components";
+import { Link, useLocation } from 'react-router-dom';
+import { useRef } from 'react';
+import styled from 'styled-components';
+
 export default function GoBackLink() {
-  
-  const location = useLocation();
-  // console.log(location.state);
-    return <>
-        <LinkBack to={location.state?.from ?? '/'}>GO BACK LINK</LinkBack>
+  let location = useLocation();
+  const page = useRef(location.state?.from);
+  const backPage = page.current || '/';
+  const backLinkHref = location.state ? location.state?.from : backPage;
+  return (
+    <>
+      <LinkBack to={backLinkHref}>GO BACK LINK</LinkBack>
     </>
-    
+  );
 }
+
+
 const LinkBack = styled(Link)`
   position: absolute;
   color: blue;
