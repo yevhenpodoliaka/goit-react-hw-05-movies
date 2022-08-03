@@ -12,7 +12,9 @@ export default function Cast() {
       try {
         const response = await fetchCast(movieId);
         await setCast(response.cast);
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     fetch();

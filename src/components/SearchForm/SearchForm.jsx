@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { useState } from "react";
 
 export default function SearchForm({onSubmit}) {
@@ -15,4 +16,8 @@ export default function SearchForm({onSubmit}) {
         <input type="text" value={query} onChange={handelChange} />
         <button type="submit">submit</button>
     </form>
+}
+
+SearchForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
 }

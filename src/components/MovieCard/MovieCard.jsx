@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import {
   Card,
   WrapImg,
@@ -34,4 +35,12 @@ export default function MovieCard({
       </WrapDescription>
     </Card>
   );
+}
+
+MovieCard.propTypes = {
+  poster_path: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  overview: PropTypes.string.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.object)
+
 }

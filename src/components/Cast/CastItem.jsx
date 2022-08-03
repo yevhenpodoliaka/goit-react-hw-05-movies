@@ -1,5 +1,7 @@
+import PropTypes from 'prop-types'
 import defaultPoster from '../../img/no-poster.jpg';
 import { Item, CastImg, CastTitle, CastText } from './Cast.styled';
+
 export default function CastItem({ character, name, profile_path }) {
   const imageUrl = profile_path
     ? `https://image.tmdb.org/t/p/w500/${profile_path}`
@@ -12,3 +14,10 @@ export default function CastItem({ character, name, profile_path }) {
     </Item>
   );
 }
+
+CastItem.propTypes = {
+  src: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  character: PropTypes.string.isRequired,
+}
+
