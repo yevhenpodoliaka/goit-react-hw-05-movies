@@ -13,14 +13,16 @@ export default function Movies() {
   };
   const query = searchParams.get('query');
   useEffect(() => {
-    if (!query) {
+    if (!query ||query.trim()==='') {
       return;
     }
     async function fetch() {
       try {
         const response = await fetchSearchMovie(query);
         await setItems(response.results);
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     }
     fetch();
   }, [query]);

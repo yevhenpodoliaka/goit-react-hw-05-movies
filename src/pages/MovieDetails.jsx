@@ -18,7 +18,9 @@ export default function MovieDetalis() {
       try {
         const response = await fetchMovieById(movieId);
         await setData(response);
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     fetch();
