@@ -5,13 +5,13 @@ import {
   useParams,
   Outlet,
   NavLink,
-  Link,
 } from 'react-router-dom';
 import { fetchMovieById } from 'service/fetchApi';
 import MovieCard from '../components/MovieCard/MovieCard';
+import GoBackLink from 'components/GoBackLink/GoBackLink';
 
 export default function MovieDetalis() {
-  const [data, setData] = useState({});
+  const [data, setData] = useState(null);
   const { movieId } = useParams();
   useEffect(() => {
     async function fetch() {
@@ -27,15 +27,17 @@ export default function MovieDetalis() {
   }, [movieId]);
 
   const location = useLocation();
+  
   return (
+
     <>
-      <LinkBack to={location.state?.from ?? '/'}> Go back</LinkBack>
-      <MovieCard
+<GoBackLink/>
+  { data &&  <MovieCard
         poster_path={data.poster_path}
         title={data.title}
         overview={data.overview}
         genres={data.genres}
-      />
+      />}
       <Wrap>
         <h3>Additional Information</h3>
         <NavLinkStyled to="cast" state={{ from: location }}>
@@ -68,12 +70,4 @@ const NavLinkStyled = styled(NavLink)`
     font-weight: bold;
   }
 `;
-const LinkBack = styled(Link)`
-  position: absolute;
-  color: blue;
-  text-decoration: none;
-  &:hover {
-    transform: scale(1.3);
-    font-weight: bold;
-  }
-`;
+
