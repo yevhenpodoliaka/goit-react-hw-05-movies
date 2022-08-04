@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useState, useEffect, Suspense } from 'react';
-import { useLocation, useParams, Outlet, NavLink } from 'react-router-dom';
+import { useParams, Outlet, NavLink } from 'react-router-dom';
 import { fetchMovieById } from 'service/fetchApi';
 import MovieCard from '../components/MovieCard/MovieCard';
 import GoBackLink from 'components/GoBackLink/GoBackLink';
@@ -21,7 +21,6 @@ export default function MovieDetalis() {
     fetch();
   }, [movieId]);
 
-  const location = useLocation();
   if (!data) {
     return null;
   }
@@ -38,12 +37,8 @@ export default function MovieDetalis() {
       />
       <Wrap>
         <h3>Additional Information</h3>
-        <NavLinkStyled to="cast" state={{ from: location }}>
-          cast
-        </NavLinkStyled>
-        <NavLinkStyled to="reviews" state={{ from: location }}>
-          reviews
-        </NavLinkStyled>
+        <NavLinkStyled to="cast">cast</NavLinkStyled>
+        <NavLinkStyled to="reviews">reviews</NavLinkStyled>
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />
         </Suspense>
